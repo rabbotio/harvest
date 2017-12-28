@@ -1,0 +1,5 @@
+require('es6-promise').polyfill()
+require('isomorphic-fetch')
+require('util.promisify/shim')()
+require('dotenv/config')
+require('@rabbotio/noconsole')

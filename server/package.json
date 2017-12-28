@@ -1,0 +1,35 @@
+{
+  "name": "harvest",
+  "version": "1.0.0",
+  "description": "🐝 Project Harvest (ハーヴェスト Hāvesuto)",
+  "main": "index.js",
+  "author": "katopz <katopz@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@rabbotio/fetcher": "^1.0.2",
+    "@rabbotio/noconsole": "^1.0.1",
+    "apollo-server-express": "^1.3.2",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "es6-promise": "^4.2.2",
+    "express": "^4.16.2",
+    "graphql": "^0.12.3",
+    "graphql-tools": "^2.14.1",
+    "helmet": "^3.9.0",
+    "isomorphic-fetch": "^2.2.1",
+    "util.promisify": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.2",
+    "typescript": "^2.6.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "jest --watchAll",
+    "mon": "nodemon index.js",
+    "start": "node index.js"
+  }
+}
