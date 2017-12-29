@@ -34,7 +34,7 @@ yarn start
 - [ ] Can swap price e.g. `eth_omg` or `omg_eth`.
 
 ### ⏱ Tracer
-> Will provide shortest routes and collect arbitrage time/fund/profit summary for analysis later.
+> Will collect arbitrage time/fund/profit summary for analysis later.
 - [ ] It can collect the results.
 
 ### 🐮 Trader

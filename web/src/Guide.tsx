@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './App.css'
+import * as React from 'react'
+import './Guide.css'
 
 // Font
 import 'typeface-roboto'
@@ -8,8 +8,23 @@ import 'typeface-roboto'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-class App extends Component {
-  constructor (props) {
+type GuideProps = {
+}
+
+type GuideState = {
+  USD_THB: number,
+  fund: number,
+  from: string,
+  to: string,
+  fromExchange: string,
+  toExchange: string,
+  prices: any,
+  tradingFees: any,
+  withdrawFees: any,
+};
+
+class Guide extends React.Component<GuideProps, GuideState> {
+  constructor(props) {
     super(props)
 
     const tradingFees = {
@@ -68,18 +83,18 @@ class App extends Component {
       prices,
       tradingFees,
       withdrawFees
-    }
+    } as GuideState
   }
 
-  currency (value) {
+  currency(value) {
     return Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   }
 
-  getPrice (exchange, pair) {
+  getPrice(exchange, pair) {
     return this.state.prices.find(element => element.exchange === exchange && element.pair === pair)
   }
 
-  render () {
+  render() {
     const { fund, tradingFees, withdrawFees, from, to, fromExchange, toExchange } = this.state
     let output = { result: fund }
 
@@ -88,7 +103,7 @@ class App extends Component {
     const withdraw = (output, exchange, symbol) => (output.result -= withdrawFees[exchange][symbol])
 
     return (
-      <div className='App'>
+      <div className='Guide'>
         <div>|</div>
         <div>{`${this.currency(output.result)} THB`}</div>
         <div>|</div>
@@ -130,4 +145,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Guide

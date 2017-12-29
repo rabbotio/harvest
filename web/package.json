@@ -1,19 +1,27 @@
 {
-  "name": "harvest",
+  "name": "apollo-client-preset-ts-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "material-ui": "^0.20.0",
+    "apollo-client-preset": "^1.0.5",
+    "graphql": "^0.12.3",
     "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17",
+    "react-scripts-ts": "2.8.0",
     "react-tap-event-plugin": "^3.0.2",
     "typeface-roboto": "^0.0.45"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.9",
+    "@types/node": "^8.5.2",
+    "@types/react": "^16.0.31",
+    "@types/react-dom": "^16.0.3"
   }
 }

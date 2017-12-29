@@ -2,8 +2,11 @@ const { getJSON, postJSON } = require('@rabbotio/fetcher')
 
 class Harvester {
   async fetch() {
+    // thb -> eth -> xmr -> thb
     // TODO : use real price
     await getJSON(`https://bx.in.th/api/`).then(console.log)
+    // https://api.binance.com//api/v3/ticker/price?symbol=XMRETH
+    // {"symbol":"XMRETH","price":"0.47532000"}
 
     // TODO : Market adapter
     // TODO : GraphQL
