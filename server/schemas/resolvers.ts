@@ -1,5 +1,4 @@
 let _contents = []
-const Harvester = require('../harvester')
 const harvester = new Harvester()
 
 const resolvers = {

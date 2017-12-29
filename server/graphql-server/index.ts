@@ -1,7 +1,5 @@
-const Server = require('./Server')
-
 class GraphQLServer extends Server {
-  constructor (baseURL, schema, options = {}) {
+  constructor(baseURL, schema, options: any = {}) {
     super(baseURL, options)
 
     // GraphQL

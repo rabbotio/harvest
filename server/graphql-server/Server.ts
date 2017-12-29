@@ -1,5 +1,9 @@
 class Server {
-  _initApp () {
+  _app = null
+  baseURL = null
+  server = null
+
+  _initApp() {
     // Express
     const express = require('express')
     const app = express()
@@ -23,16 +27,16 @@ class Server {
     return app
   }
 
-  constructor (baseURL, options = {}) {
+  constructor(baseURL, options = {}) {
     this.baseURL = baseURL
     this._app = this._initApp()
   }
 
-  get app () {
+  get app() {
     return this._app
   }
 
-  start () {
+  start() {
     return new Promise((resolve, reject) => {
       // Graceful Shutdown Server
       const gracefulShutdown = (server, signal) => {
@@ -63,14 +67,14 @@ class Server {
         gracefulShutdown(this.server, 'SIGTERM')
       })
 
-      // listen for TERM siganal .e.g. Ctrl-C
+      // listen for TERM signal .e.g. Ctrl-C
       process.on('SIGINT', () => {
         gracefulShutdown(this.server, 'SIGINT')
       })
     })
   }
 
-  stop () {
+  stop() {
     if (!this.server) return Promise.resolve(false)
 
     return new Promise((resolve, reject) => {
