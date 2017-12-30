@@ -1,3 +1,5 @@
+import Server from './Server'
+
 class GraphQLServer extends Server {
   constructor(baseURL, schema, options: any = {}) {
     super(baseURL, options)

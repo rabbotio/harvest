@@ -35,7 +35,8 @@ yarn start
 
 ### ⏱ Tracer
 > Will collect arbitrage time/fund/profit summary for analysis later.
-- [ ] It can collect the results.
+- [ ] It can collect transfer results.
+- [ ] It can estimate transfer cost.
 
 ### 🐮 Trader
 > Will execute deposit/trade/withdraw.
@@ -48,6 +49,17 @@ yarn start
 - [ ] It can show routes sort by most profit and highest success.
 - [ ] It can show current step of trade.
 - [ ] It have interface for `start`, `resume`, `pause`
+
+### 🐝 Harvester
+- [ ] It know floor/ceiling.
+- [ ] It know volume.
+- [ ] It know collection.
+- [ ] It know acceleration.
+- [ ] It know velocity.
+- [ ] It can predict 1 day trade.
+- [ ] It can predict 5 days trade.
+- [ ] It can predict 10 days trade.
+- [ ] It can signal trade.
 
 ### 💸 Arbitrager
 > Will show guide and trade.

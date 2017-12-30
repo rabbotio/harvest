@@ -1,12 +1,14 @@
 let _contents = []
-const harvester = new Harvester()
+
+const probe = new (require('../probe'))()
 
 const resolvers = {
   Query: {
-    prices: (root, _, context) => harvester.fetch()
+    prices: (root, { exchange, from, to }, context) => probe.getPrices(exchange, from, to),
+    routes: (root, { fund, begin, end }, context) => probe.getRoute(fund, begin, end)
   },
   Mutation: {
-    setContent: (_, { bar }, context) => _contents.push(bar)
+    // setContent: (_, { bar }, context) => _contents.push(bar)
   }
 }
 
