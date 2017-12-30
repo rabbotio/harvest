@@ -22,7 +22,7 @@ class Probe {
     // thb -> eth -> xmr -> thb
     // TODO : use real price
 
-    await getJSON(`https://api.binance.com/api/v3/ticker/price`, { symbol: 'XMRETH' }).then(console.log)
+    const results = await getJSON(`https://api.binance.com/api/v3/ticker/price`, { symbol: 'XMRETH' }).then(console.log)
     // {"symbol":"XMRETH","price":"0.47532000"}
 
     // await fetch('https://api.binance.com/api/v3/ticker/price?symbol=XMRETH').then(res => res.json()).then(console.log)
