@@ -33,6 +33,19 @@ class bx {
 
     return result
   }
+
+  static getTradeFee() {
+    return 0.25
+  }
+
+  static getWithdrawFee(symbol) {
+    const fee = {
+      eth: 0.005,
+      omg: 0.2
+    }
+
+    return fee[symbol]
+  }
 }
 
 module.exports = bx

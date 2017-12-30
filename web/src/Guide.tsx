@@ -105,7 +105,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
     return (
       <div className='Guide'>
         <div>|</div>
-        <div>{`${this.currency(output.result)} THB`}</div>
+        <div>{`${fromExchange.toUpperCase()} ${this.currency(output.result)} THB`}</div>
         <div>|</div>
         <small>{`trading fee -${tradingFees['bx']}%`}</small>
         <div>|</div>

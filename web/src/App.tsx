@@ -5,10 +5,18 @@ import Guide from './Guide';
 
 const _QUERY = gql`
 {
-  prices {
-    last
-    pair
+  prices(exchange:"bx", from:"eth", to:"thb") {
     exchange
+    pair
+    last
+    change
+    volume
+    bid_total
+    bid_volume
+    bid_highest
+    ask_total
+    ask_volume
+    ask_highest
   }
 }
 `

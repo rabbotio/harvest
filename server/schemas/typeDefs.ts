@@ -31,8 +31,6 @@ const types = [
   arbitrage,
   exchange,
   core,
-];
-
-// export default mergeTypes(types)
+]
 
 module.exports = mergeTypes(types)

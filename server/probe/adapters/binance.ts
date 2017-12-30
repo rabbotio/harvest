@@ -25,6 +25,20 @@ class binance {
       }
     }
   }
+
+  static getTradeFee() {
+    return 0.1
+  }
+
+  // Ref : https://support.binance.com/hc/en-us/articles/115000429332
+  static getWithdrawFee(symbol) {
+    const fee = {
+      eth: 0.01,
+      omg: 0.3
+    }
+
+    return fee[symbol]
+  }
 }
 
 module.exports = binance
