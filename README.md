@@ -28,10 +28,11 @@ yarn start
 
 ### 🐜 Probe
 > Will gathering and provide current coins price.
-- [ ] Exchange adapter https://github.com/donbobvanbirt/coin-ticker
+- [x] Exchange adapter bx
+- [x] Exchange adapter binance
+- [x] Resolver for each market.
+- [x] Can swap price e.g. `eth_omg` or `omg_eth`.
 - [ ] Result as graph node for made decision and render as routes.
-- [ ] Resolver for each market.
-- [ ] Can swap price e.g. `eth_omg` or `omg_eth`.
 
 ### ⏱ Tracer
 > Will collect arbitrage time/fund/profit summary for analysis later.

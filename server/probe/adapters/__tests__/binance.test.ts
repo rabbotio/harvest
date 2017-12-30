@@ -1,5 +1,5 @@
 /* eslint-env jest */
-describe('binance', () => {
+describe('adapter-binance', () => {
   const data = require('../__mocks__/binance.price.json')
 
   it('can parse price from binance', async () => {
