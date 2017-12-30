@@ -3,14 +3,15 @@
 describe('bx', () => {
   const data = require('../__mocks__/bx.price.json')
 
-  it('can parser price from bx', async () => {
+  it('can parse price from bx', async () => {
+    const exchange = 'bx'
     const from = 'OMG'
     const to = 'THB'
 
-    const { parse } = require('../bx')
+    const { parse } = require(`../${exchange}`)
     const json = parse(data)
     expect(json[`${from}_${to}`]).toMatchObject({
-      exchange: 'bx',
+      exchange,
       pair: `${from}_${to}`,
       last: expect.any(Number),
       change: expect.any(Number),

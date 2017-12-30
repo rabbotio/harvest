@@ -1,35 +1,12 @@
-const { getJSON, postJSON } = require('@rabbotio/fetcher')
-
 class Probe {
-
-  async getPair(exchange) {
-    const bx = require('./adapters/bx')
-    const results = await getJSON(`https://bx.in.th/api/`).then(json => bx.parse(json))
-    return results
-  }
-
-  async getPrices(exchange, from, to) {
-    const pair = await this.getPair(exchange)
-    let prices = pair[(`${from}_${to}`).toUpperCase()]
-
-    // Swap?
-    if (!prices && pair[`${to}_${from}`]) prices = 1 / pair[`${to}_${from}`]
-
-    return prices
+  async getPrice(exchange, from, to) {
+    const adapter = require(`./adapters/${exchange}`)
+    const price = await adapter.getPrice(from, to)
+    return price
   }
 
   async fetch() {
     // thb -> eth -> xmr -> thb
-    // TODO : use real price
-
-    const results = await getJSON(`https://api.binance.com/api/v3/ticker/price`, { symbol: 'XMRETH' }).then(console.log)
-    // {"symbol":"XMRETH","price":"0.47532000"}
-
-    // await fetch('https://api.binance.com/api/v3/ticker/price?symbol=XMRETH').then(res => res.json()).then(console.log)
-
-    // TODO : Market adapter
-    // TODO : GraphQL
-
     const factor = {
       loading: false,
 
@@ -80,7 +57,7 @@ class Probe {
       ]
     }
 
-    return results
+    return
   }
 }
 

@@ -1,4 +1,14 @@
 class bx {
+  static API_URL = `https://bx.in.th/api/`
+
+  static async getPrice(from, to) {
+    const { getJSON } = require('@rabbotio/fetcher')
+    const json = await getJSON(bx.API_URL)
+    const pair = bx.parse(json)
+    const Adapter = require('./adapter')
+    return Adapter.getRate(pair, from, to)
+  }
+
   static parse(data): any {
     let result = {}
     const map = new Map(Object.entries(data))

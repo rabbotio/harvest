@@ -4,7 +4,7 @@ const probe = new (require('../probe'))()
 
 const resolvers = {
   Query: {
-    prices: (root, { exchange, from, to }, context) => probe.getPrices(exchange, from, to),
+    prices: (root, { exchange, from, to }, context) => probe.getPrice(exchange, from, to),
     routes: (root, { fund, begin, end }, context) => probe.getRoute(fund, begin, end)
   },
   Mutation: {
