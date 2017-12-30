@@ -1,25 +1,6 @@
 export default `
 scalar Date
 
-type Exchange { 
-  id: String,
-  tokens: [String]
-}
-
-type Price {
-  exchange: String,
-  pair: String,
-  last: Float
-  change: Float,
-  volume: Float,
-  bid_total: Int,
-  bid_volume: Float,
-  bid_highest: Float,
-  ask_total: Int,
-  ask_volume: Float,
-  ask_highest: Float,
-}
-
 type Query {
   prices(exchange:String!, from:String!, to:String!): Price,
   routes(from:String!, to:String!, volume:String!): [Route]

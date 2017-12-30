@@ -5,8 +5,9 @@ import {
 } from 'graphql'
 
 import { mergeTypes } from 'merge-graphql-schemas';
-import arbitrageTypeDef from './arbitrage.def';
-import coreTypeDef from './core.def';
+import arbitrage from './arbitrage.def';
+import exchange from './exchange.def';
+import core from './core.def';
 
 const DateType = new GraphQLScalarType({
   name: 'Date',
@@ -27,8 +28,9 @@ const DateType = new GraphQLScalarType({
 })
 
 const types = [
-  arbitrageTypeDef,
-  coreTypeDef,
+  arbitrage,
+  exchange,
+  core,
 ];
 
 // export default mergeTypes(types)
