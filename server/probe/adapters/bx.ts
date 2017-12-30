@@ -14,9 +14,11 @@ class bx {
     const map = new Map(Object.entries(data))
     map.forEach(value => {
       const { bids, asks } = value.orderbook
-      result[`${value.secondary_currency}_${value.primary_currency}`] = {
+      const pair = `${value.secondary_currency}_${value.primary_currency}`
+
+      result[pair] = {
         exchange: 'bx',
-        pair: `${value.secondary_currency}_${value.primary_currency}`,
+        pair,
         last: value.last_price,
         change: value.change,
         volume: value.volume_24hours,

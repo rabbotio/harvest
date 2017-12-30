@@ -5,24 +5,23 @@ class binance {
   static async getPrice(from, to) {
     const { getJSON } = require('@rabbotio/fetcher')
     const json = await getJSON(`${binance.API_URL}ticker/price`, { symbol: `${from}${to}` })
-
-    //const json = await getJSON(`https://api.binance.com/api/v3/ticker/price?symbol=XMRETH`)
-    // const json = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=XMRETH').then(res => res.json())
     const pair = binance.parse(json)
     const Adapter = require('./adapter')
+
     return Adapter.getRate(pair, from, to)
   }
 
   static parse(data): any {
     const from = data.symbol.substring(0, 3)
     const to = data.symbol.substring(3, 6)
-    const last = data.price
+    const last = Number(data.price)
+    const pair = `${from}_${to}`
 
     return {
-      [`${from}_${to}`]: {
+      [pair]: {
         exchange: 'binance',
-        pair: `${from}_${to}`,
-        last: Number(last)
+        pair,
+        last
       }
     }
   }
