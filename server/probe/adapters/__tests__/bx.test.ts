@@ -1,7 +1,8 @@
 /* eslint-env jest */
-const data = require('../__mocks__/bx.price.json')
 
-describe('Adapters', () => {
+describe('bx', () => {
+  const data = require('../__mocks__/bx.price.json')
+
   it('can parser price from bx', async () => {
     const from = 'OMG'
     const to = 'THB'
