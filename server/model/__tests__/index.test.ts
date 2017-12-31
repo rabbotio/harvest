@@ -1,15 +1,13 @@
 /* eslint-env jest */
-describe('probe', () => {
+import Model from '../'
 
-  const Probe = require('../index')
-  const probe = new Probe()
-
+describe('Model', () => {
   it('can get price from bx', async () => {
     const exchange = 'bx'
     const from = 'OMG'
     const to = 'THB'
 
-    const json = await probe.getPrice(exchange, from, to)
+    const json = await Model.getPrice(exchange, from, to)
     expect(json).toMatchObject({
       exchange,
       pair: `${from}_${to}`,
@@ -22,7 +20,7 @@ describe('probe', () => {
     const from = 'XMR'
     const to = 'ETH'
 
-    const json = await probe.getPrice(exchange, from, to)
+    const json = await Model.getPrice(exchange, from, to)
     expect(json).toMatchObject({
       exchange,
       pair: `${from}_${to}`,

@@ -1,4 +1,4 @@
-import Helper from './helper'
+import Util from './util'
 
 class binance {
 
@@ -9,7 +9,7 @@ class binance {
     const json = await getJSON(`${binance.API_URL}ticker/price`, { symbol: `${from}${to}` })
     const pair = binance.parse(json)
 
-    return Helper.getRate(pair, from, to)
+    return Util.getRate(pair, from, to)
   }
 
   static parse(data): any {

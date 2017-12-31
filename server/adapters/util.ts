@@ -1,4 +1,4 @@
-class Helper {
+class Util {
   static getRate(pair, from, to) {
     // Rate
     let rate = pair[(`${from}_${to}`).toUpperCase()]
@@ -15,4 +15,4 @@ class Helper {
   }
 }
 
-export default Helper
+export default Util

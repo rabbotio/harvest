@@ -1,4 +1,5 @@
-import Helper from './helper'
+import Util from './util'
+
 class bx {
   static API_URL = `https://bx.in.th/api/`
 
@@ -6,7 +7,7 @@ class bx {
     const { getJSON } = require('@rabbotio/fetcher')
     const json = await getJSON(bx.API_URL)
     const pair = bx.parse(json)
-    return Helper.getRate(pair, from, to)
+    return Util.getRate(pair, from, to)
   }
 
   static parse(data): any {

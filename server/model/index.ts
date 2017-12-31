@@ -1,9 +1,6 @@
+import Adapter from '../adapters'
 class Model {
-
-  static Probe = require('../probe')
-  static probe = new Probe()
-
-  static getPrice = probe.getPrice
+  static getPrice = Adapter.getPrice
 }
 
 export default Model

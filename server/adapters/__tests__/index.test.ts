@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import Helper from '../helper'
+import Util from '../util'
 
 describe('adapters', () => {
   it('can get symbol pair rate', async () => {
@@ -10,7 +10,7 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Helper.getRate(pair, from, to)
+    const rate = Util.getRate(pair, from, to)
 
     expect(rate).toMatchObject({
       exchange,
@@ -27,7 +27,7 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Helper.getRate(pair, to, from)
+    const rate = Util.getRate(pair, to, from)
 
     expect(rate).toMatchObject({
       exchange,
@@ -44,6 +44,6 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    expect(() => Helper.getRate(pair, to, from)).toThrowError('Pair not exist')
+    expect(() => Util.getRate(pair, to, from)).toThrowError('Pair not exist')
   })
 })
