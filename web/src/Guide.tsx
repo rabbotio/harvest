@@ -1,13 +1,6 @@
 import * as React from 'react'
 import './Guide.css'
 
-// Font
-import 'typeface-roboto'
-
-// Click handler
-import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
-
 type GuideProps = {
 }
 
