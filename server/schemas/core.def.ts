@@ -1,9 +1,15 @@
 export default `
 scalar Date
 
+type TradeFee {
+  bx: Float,
+  binance: Float,
+}
+
 type Query {
   prices(exchange:String!, from:String!, to:String!): Price,
-  routes(from:String!, to:String!, volume:String!): [Route]
+  tradeFees: TradeFee,
+  # routes(from:String!, to:String!, volume:String!): [Route]
 }
 
 type Mutation {
