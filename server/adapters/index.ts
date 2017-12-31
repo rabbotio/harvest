@@ -1,4 +1,25 @@
 class Adapter {
+
+  static getTradeFees() {
+    return {
+      bx: 0.25,
+      binance: 0.1
+    }
+  }
+
+  static getWithdrawFees() {
+    return {
+      bx: {
+        eth: 0.005,
+        omg: 0.2
+      },
+      binance: {
+        eth: 0.01,
+        omg: 0.3
+      }
+    }
+  }
+
   static getTradeFee(exchange) {
     return require(`./${exchange}`).getTradeFee()
   }

@@ -19,7 +19,7 @@ type GuideState = {
   fromExchange: string,
   toExchange: string,
   prices: any,
-  tradingFees: any,
+  tradeFees: any,
   withdrawFees: any,
 };
 
@@ -27,7 +27,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
   constructor(props) {
     super(props)
 
-    const tradingFees = {
+    const tradeFees = {
       bx: 0.25,
       binance: 0.1
     }
@@ -81,7 +81,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
       fromExchange: 'bx',
       toExchange: 'binance',
       prices,
-      tradingFees,
+      tradeFees,
       withdrawFees
     } as GuideState
   }
@@ -95,11 +95,11 @@ class Guide extends React.Component<GuideProps, GuideState> {
   }
 
   render() {
-    const { fund, tradingFees, withdrawFees, from, to, fromExchange, toExchange } = this.state
+    const { fund, tradeFees, withdrawFees, from, to, fromExchange, toExchange } = this.state
     let output = { result: fund }
 
     const trade = (output, exchange, pair) => (output.result *= this.getPrice(exchange, pair).last)
-    const fee = (output, exchange) => (output.result *= 1 - tradingFees[exchange] / 100)
+    const fee = (output, exchange) => (output.result *= 1 - tradeFees[exchange] / 100)
     const withdraw = (output, exchange, symbol) => (output.result -= withdrawFees[exchange][symbol])
 
     return (
@@ -107,7 +107,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         <div>|</div>
         <div>{`${fromExchange.toUpperCase()} ${this.currency(output.result)} THB`}</div>
         <div>|</div>
-        <small>{`trading fee -${tradingFees['bx']}%`}</small>
+        <small>{`trading fee -${tradeFees['bx']}%`}</small>
         <div>|</div>
         <div>{`${fromExchange.toUpperCase()} ${this.currency(fee(output, 'bx'))} THB`}</div>
         <div>|</div>
@@ -123,7 +123,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         <div>|</div>
         <div>{`${toExchange.toUpperCase()} ${this.currency(trade(output, 'binance', `eth_${to}`))} OMG`}</div>
         <div>|</div>
-        <small>{`trading fee -${tradingFees['binance']}%`}</small>
+        <small>{`trading fee -${tradeFees['binance']}%`}</small>
         <div>|</div>
         <div>{`${toExchange.toUpperCase()} ${this.currency(fee(output, 'binance'))} OMG`}</div>
         <div>|</div>
@@ -135,7 +135,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         <div>|</div>
         <div>{`${fromExchange.toUpperCase()} ${this.currency(trade(output, fromExchange, `${to}_thb`))} THB`}</div>
         <div>|</div>
-        <small>{`trading fee -${tradingFees['bx']}%`}</small>
+        <small>{`trading fee -${tradeFees['bx']}%`}</small>
         <div>|</div>
         <div>{`${fromExchange.toUpperCase()} ${this.currency(fee(output, 'bx'))} THB`}</div>
         <div>|</div>
