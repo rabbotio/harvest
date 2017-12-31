@@ -1,3 +1,5 @@
+import Helper from './helper'
+
 class binance {
 
   static API_URL = `https://api.binance.com/api/v3/`
@@ -6,9 +8,8 @@ class binance {
     const { getJSON } = require('@rabbotio/fetcher')
     const json = await getJSON(`${binance.API_URL}ticker/price`, { symbol: `${from}${to}` })
     const pair = binance.parse(json)
-    const Adapter = require('./adapter')
 
-    return Adapter.getRate(pair, from, to)
+    return Helper.getRate(pair, from, to)
   }
 
   static parse(data): any {

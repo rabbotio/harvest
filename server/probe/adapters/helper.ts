@@ -1,4 +1,4 @@
-class Adapter {
+class Helper {
   static getRate(pair, from, to) {
     // Rate
     let rate = pair[(`${from}_${to}`).toUpperCase()]
@@ -15,4 +15,4 @@ class Adapter {
   }
 }
 
-module.exports = Adapter
+export default Helper

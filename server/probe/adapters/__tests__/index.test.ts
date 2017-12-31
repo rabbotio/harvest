@@ -1,7 +1,7 @@
 /* eslint-env jest */
-describe('adapter', () => {
-  const { getRate } = require('../adapter')
+import Helper from '../helper'
 
+describe('adapters', () => {
   it('can get symbol pair rate', async () => {
     const data = require('../__mocks__/binance.price.json')
     const exchange = 'binance'
@@ -10,7 +10,7 @@ describe('adapter', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = getRate(pair, from, to)
+    const rate = Helper.getRate(pair, from, to)
 
     expect(rate).toMatchObject({
       exchange,
@@ -27,7 +27,7 @@ describe('adapter', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = getRate(pair, to, from)
+    const rate = Helper.getRate(pair, to, from)
 
     expect(rate).toMatchObject({
       exchange,
@@ -44,6 +44,6 @@ describe('adapter', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    expect(() => getRate(pair, to, from)).toThrowError('Pair not exist')
+    expect(() => Helper.getRate(pair, to, from)).toThrowError('Pair not exist')
   })
 })

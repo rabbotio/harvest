@@ -10,6 +10,12 @@ class Probe {
     output.result *= price.latest
   }
 
+  async fee(output, exchange) {
+    const adapter = require(`./adapters/${exchange}`)
+    const fee = await adapter.getFee
+      (output.result *= 1 - tradingFees[exchange] / 100)
+  }
+
   async getRoute(fund: Number, fromSymbol: String, fromExchange: String, toExchange: String, baseSymbol: String = 'ETH') {
     // TODO
     throw new Error('TODO')
