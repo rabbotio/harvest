@@ -6,7 +6,7 @@ class Adapter {
 
     // Swap?
     const swapped = pair[`${to}_${from}`]
-    if (!swapped) throw new Error('No pair found')
+    if (!swapped) throw new Error('Pair not exist')
 
     // Swap from normal rate
     swapped.last = 1 / swapped.last

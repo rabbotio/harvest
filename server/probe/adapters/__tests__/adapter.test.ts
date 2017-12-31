@@ -1,7 +1,8 @@
 /* eslint-env jest */
 describe('adapter', () => {
-  it('can get swapped pair symbol', async () => {
-    const { getRate } = require('../adapter')
+  const { getRate } = require('../adapter')
+
+  it('can get symbol pair rate', async () => {
     const data = require('../__mocks__/binance.price.json')
     const exchange = 'binance'
     const from = 'XMR'
@@ -9,20 +10,40 @@ describe('adapter', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    let rate = getRate(pair, from, to)
+    const rate = getRate(pair, from, to)
 
     expect(rate).toMatchObject({
       exchange,
       pair: `${from}_${to}`,
-      last: 0.46301
+      last: Number(data.price)
     })
+  })
 
-    // Swap
-    rate = getRate(pair, to, from)
+  it('can get swapped symbol pair rate', async () => {
+    const data = require('../__mocks__/binance.price.json')
+    const exchange = 'binance'
+    const from = 'XMR'
+    const to = 'ETH'
+
+    const { parse } = require(`../${exchange}`)
+    const pair = parse(data)
+    const rate = getRate(pair, to, from)
+
     expect(rate).toMatchObject({
       exchange,
       pair: `${to}_${from}`,
-      last: 1 / 0.46301
+      last: 1 / Number(data.price)
     })
+  })
+
+  it('will throw error for not exist symbol pair rate', async () => {
+    const data = require('../__mocks__/binance.price.json')
+    const exchange = 'binance'
+    const from = 'OMG'
+    const to = 'OMG'
+
+    const { parse } = require(`../${exchange}`)
+    const pair = parse(data)
+    expect(() => getRate(pair, to, from)).toThrowError('Pair not exist')
   })
 })
