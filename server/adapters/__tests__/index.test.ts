@@ -10,7 +10,7 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Util.getRate(pair, from, to)
+    const rate = Util.getLastPrice(pair, from, to)
 
     expect(rate).toMatchObject({
       exchange,
@@ -27,7 +27,7 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Util.getRate(pair, to, from)
+    const rate = Util.getLastPrice(pair, to, from)
 
     expect(rate).toMatchObject({
       exchange,
@@ -44,6 +44,6 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    expect(() => Util.getRate(pair, to, from)).toThrowError('Pair not exist')
+    expect(() => Util.getLastPrice(pair, to, from)).toThrowError('Pair not exist')
   })
 })

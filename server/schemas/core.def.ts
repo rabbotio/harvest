@@ -7,7 +7,7 @@ type TradeFee {
 }
 
 type Query {
-  prices(exchange:String!, from:String!, to:String!): Price,
+  price(exchange:String!, from:String!, to:String!): Price,
   tradeFees: TradeFee,
   # routes(from:String!, to:String!, volume:String!): [Route]
 }

@@ -1,5 +1,5 @@
 class Util {
-  static getRate(pair, from, to) {
+  static getLastPrice(pair, from, to) {
     // Rate
     let rate = pair[(`${from}_${to}`).toUpperCase()]
     if (rate) return rate

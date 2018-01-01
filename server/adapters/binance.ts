@@ -9,7 +9,7 @@ class binance {
     const json = await getJSON(`${binance.API_URL}ticker/price`, { symbol: `${from}${to}` })
     const pair = binance.parse(json)
 
-    return Util.getRate(pair, from, to)
+    return Util.getLastPrice(pair, from, to)
   }
 
   static parse(data): any {

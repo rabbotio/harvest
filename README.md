@@ -71,7 +71,7 @@ yarn start
 
 ### 🕷 Web
 > Will provide web command interface for arbitrage.
-- [ ] It can load prices data from server and show as routes.
+- [ ] It can load price data from server and show as routes.
 - [ ] It can show list of routes and sort by most profit.
 - [ ] Input field for start funding.
 - [ ] Input field for exchange API key.

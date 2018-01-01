@@ -2,7 +2,6 @@ import * as React from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import Guide from './Guide';
-import Fund from './components/Fund';
 
 // Theme
 import { deepOrange500 } from 'material-ui/styles/colors'
@@ -25,7 +24,7 @@ const styles = {
 
 const _QUERY = gql`
 {
-  prices(exchange:"bx", from:"eth", to:"thb") {
+  price(exchange:"bx", from:"eth", to:"thb") {
     exchange
     pair
     last
@@ -48,10 +47,6 @@ const muiTheme = getMuiTheme({
   }
 })
 
-const onFundChanged = fund => {
-  console.log(fund)
-}
-
 const withService = graphql<Response>(_QUERY)
 export default withService(({ data }) => {
   if (data && data.loading) { return <p>loading...</p> }
@@ -59,7 +54,6 @@ export default withService(({ data }) => {
   // Do something with your data
   return (<MuiThemeProvider muiTheme={muiTheme}>
     <div style={styles.container}>
-      <Fund onFundChanged={onFundChanged} />
       <Guide />
       <pre>{JSON.stringify(data)}</pre>
     </div>

@@ -7,7 +7,7 @@ class bx {
     const { getJSON } = require('@rabbotio/fetcher')
     const json = await getJSON(bx.API_URL)
     const pair = bx.parse(json)
-    return Util.getRate(pair, from, to)
+    return Util.getLastPrice(pair, from, to)
   }
 
   static parse(data): any {
