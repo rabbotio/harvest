@@ -1,7 +1,7 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import Guide from './Guide';
+import Guide from './components/Guide';
 
 // Theme
 import { deepOrange500 } from 'material-ui/styles/colors'
@@ -24,18 +24,14 @@ const styles = {
 
 const _QUERY = gql`
 {
-  price(exchange:"bx", from:"eth", to:"thb") {
-    exchange
-    pair
-    last
-    change
-    volume
-    bid_total
-    bid_volume
-    bid_highest
-    ask_total
-    ask_volume
-    ask_highest
+  prices {
+    bx {
+      ETH_THB
+      OMG_THB
+    }
+    binance {
+      OMG_ETH
+    }
   }
 }
 `
@@ -51,7 +47,7 @@ const withService = graphql<Response>(_QUERY)
 export default withService(({ data }) => {
   if (data && data.loading) { return <p>loading...</p> }
 
-  // Do something with your data
+  // Do somETHing with your data
   return (<MuiThemeProvider muiTheme={muiTheme}>
     <div style={styles.container}>
       <Guide />

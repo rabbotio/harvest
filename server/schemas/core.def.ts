@@ -1,14 +1,11 @@
 export default `
 scalar Date
 
-type TradeFee {
-  bx: Float,
-  binance: Float,
-}
-
 type Query {
   price(exchange:String!, from:String!, to:String!): Price,
+  prices: Prices,
   tradeFees: TradeFee,
+  withdrawFees: WithdrawFee,
   # routes(from:String!, to:String!, volume:String!): [Route]
 }
 

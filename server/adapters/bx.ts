@@ -3,11 +3,15 @@ import Util from './util'
 class bx {
   static API_URL = `https://bx.in.th/api/`
 
-  static async getPrice(from, to) {
+  static async getPairs() {
     const { getJSON } = require('@rabbotio/fetcher')
     const json = await getJSON(bx.API_URL)
-    const pair = bx.parse(json)
-    return Util.getLastPrice(pair, from, to)
+    return bx.parse(json)
+  }
+
+  static async getPrice(from, to) {
+    const pairs = await bx.getPairs()
+    return Util.getPairInfo(pairs, from, to)
   }
 
   static parse(data): any {
@@ -41,8 +45,8 @@ class bx {
 
   static getWithdrawFee(symbol) {
     const fee = {
-      eth: 0.005,
-      omg: 0.2
+      ETH: 0.005,
+      OMG: 0.2
     }
 
     return fee[symbol]

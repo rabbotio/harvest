@@ -2,7 +2,7 @@
 🐝 Project Harvest (ハーヴェスト Hāvesuto)
 
 ![](./raw/overview.png)
-> [EDIT](http://www.nomnoml.com/#view/%5B%3Cactor%3EUser%5D-%3E%5B%F0%9F%A4%96%20chatbot%5D%0A%0A%5B%F0%9F%A4%96%20chatbot%7Ci18n%5D%0A%5B%F0%9F%A4%96%20chatbot%5D-%3E%5B%F0%9F%92%B8%20arbitrager%5D%0A%5B%F0%9F%A4%96%20chatbot%5D-%3E%5B%F0%9F%95%B7%20web%5D%0A%0A%5B%F0%9F%95%B7%20web%7Ci18n%5D%0A%5B%F0%9F%95%B7%20web%5D-%3E%5B%F0%9F%92%B8%20arbitrager%5D%0A%0A%5B%F0%9F%92%B8%20arbitrager%7Ci18n%7Cstart()%3Bresume()%3Bpause()%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D%3C-%3E%F0%9F%92%B0%5B%F0%9F%90%AE%20trader%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D%3C-%3E%5B%F0%9F%93%8D%20guide%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D-%3E%5B%E2%8F%B1%20tracer%5D%0A%0A%5B%F0%9F%90%AE%20trader%5D%3C-%3E%F0%9F%92%B0%5B%F0%9F%93%88%20exchanges%5D%0A%0A%5B%F0%9F%90%AE%20trader%7C%0Adeposit(from%2C%20to%2C%20value)%3B%0Atrade(from%2C%20to%2C%20value)%3B%0Awithdraw(from%2C%20to%2C%20value)%0A%5D%3C-%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%F0%9F%93%8D%20guide%7CshowPath(routes)%3BsetLocation(step)%5D%0A%5B%F0%9F%93%8D%20guide%5D%3C-%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%E2%8F%B1%20tracer%7Crecord(routes%2C%20results)%5D%0A%5B%E2%8F%B1%20tracer%5D-%3E%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%F0%9F%92%BC%20server%7CexchangeId%3BtradeFee%3BwithDrawFee%7C%0AgetExchanges()%0AgetPrice(from%2C%20to)%7C%0AsetResults()%0A%5D%0A%5B%F0%9F%92%BC%20server%5D%3C-%5B%F0%9F%97%84%F0%9F%93%89%20DB%5D%0A%0A%5B%F0%9F%90%9C%20probe%7Charvest()%5D%0A%5B%F0%9F%90%9C%20probe%5D%3C-%5B%F0%9F%93%89%20exchanges%5D%0A%5B%F0%9F%90%9C%20probe%5D-%3E%5B%F0%9F%97%84%F0%9F%93%89%20DB%5D%0A%0A%5B%F0%9F%92%BC%20server%5D-%3E%5B%F0%9F%94%AE%20ML%5D)
+> [EDIT](http://www.nomnoml.com/#view/%5B%3Cactor%3EUser%5D-%3E%5B%F0%9F%A4%96%20chatbot%5D%0A%0A%5B%F0%9F%A4%96%20chatbot%7Ci18n%5D%0A%5B%F0%9F%A4%96%20chatbot%5D-%3E%5B%F0%9F%92%B8%20arbitrager%5D%0A%5B%F0%9F%A4%96%20chatbot%5D-%3E%5B%F0%9F%95%B7%20web%5D%0A%0A%5B%F0%9F%95%B7%20web%7Ci18n%5D%0A%5B%F0%9F%95%B7%20web%5D-%3E%5B%F0%9F%92%B8%20arbitrager%5D%0A%0A%5B%F0%9F%92%B8%20arbitrager%7Ci18n%7Cstart()%3Bresume()%3Bpause()%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D%3C-%3E%F0%9F%92%B0%5B%F0%9F%90%AE%20trader%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D%3C-%3E%5B%F0%9F%93%8D%20guide%5D%0A%5B%F0%9F%92%B8%20arbitrager%5D-%3E%5B%E2%8F%B1%20tracer%5D%0A%0A%5B%F0%9F%90%AE%20trader%5D%3C-%3E%F0%9F%92%B0%5B%F0%9F%93%88%20exchanges%5D%0A%0A%5B%F0%9F%90%AE%20trader%7C%0Adeposit(from%2C%20to%2C%20value)%3B%0Atrade(from%2C%20to%2C%20value)%3B%0Awithdraw(from%2C%20to%2C%20value)%0A%5D%3C-%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%F0%9F%93%8D%20guide%7CshowPath(routes)%3BsetLocation(step)%5D%0A%5B%F0%9F%93%8D%20guide%5D%3C-%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%E2%8F%B1%20tracer%7Crecord(routes%2C%20results)%5D%0A%5B%E2%8F%B1%20tracer%5D-%3E%5B%F0%9F%92%BC%20server%5D%0A%0A%5B%F0%9F%92%BC%20server%7CexchangeId%3BtradeFee%3BwithdrawFee%7C%0AgetExchanges()%0AgetPrice(from%2C%20to)%7C%0AsetResults()%0A%5D%0A%5B%F0%9F%92%BC%20server%5D%3C-%5B%F0%9F%97%84%F0%9F%93%89%20DB%5D%0A%0A%5B%F0%9F%90%9C%20probe%7Charvest()%5D%0A%5B%F0%9F%90%9C%20probe%5D%3C-%5B%F0%9F%93%89%20exchanges%5D%0A%5B%F0%9F%90%9C%20probe%5D-%3E%5B%F0%9F%97%84%F0%9F%93%89%20DB%5D%0A%0A%5B%F0%9F%92%BC%20server%5D-%3E%5B%F0%9F%94%AE%20ML%5D)
 
 ## Develop
 ```
@@ -18,6 +18,47 @@ yarn install
 yarn start
 ```
 
+## GraphQL
+### Get prices
+```
+{
+  prices {
+    bx {
+      ETH_THB
+      OMG_THB
+    }
+    binance {
+      OMG_ETH
+    }
+  }
+}
+```
+
+### Get trade fees
+```
+{
+  tradeFees {
+    bx
+    binance
+  }
+}
+```
+### Get withdraw fees
+```
+{
+  withdrawFees {
+    bx {
+      ETH
+      OMG
+    }
+    binance {
+      ETH
+      OMG
+    }
+  }
+}
+```
+
 ## TODO
 ### Infra
 - [ ] Domain name
@@ -31,7 +72,7 @@ yarn start
 - [x] Exchange adapter bx
 - [x] Exchange adapter binance
 - [x] Resolver for each market.
-- [x] Can swap price e.g. `eth_omg` or `omg_eth`.
+- [x] Can swap price e.g. `ETH_OMG` or `OMG_ETH`.
 - [ ] Result as graph node for made decision and render as routes.
 
 ### ⏱ Tracer

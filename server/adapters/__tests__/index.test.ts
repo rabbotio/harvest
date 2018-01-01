@@ -5,12 +5,12 @@ describe('adapters', () => {
   it('can get symbol pair rate', async () => {
     const data = require('../__mocks__/binance.price.json')
     const exchange = 'binance'
-    const from = 'XMR'
+    const from = 'XRP'
     const to = 'ETH'
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Util.getLastPrice(pair, from, to)
+    const rate = Util.getPairInfo(pair, from, to)
 
     expect(rate).toMatchObject({
       exchange,
@@ -22,12 +22,12 @@ describe('adapters', () => {
   it('can get swapped symbol pair rate', async () => {
     const data = require('../__mocks__/binance.price.json')
     const exchange = 'binance'
-    const from = 'XMR'
+    const from = 'XRP'
     const to = 'ETH'
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    const rate = Util.getLastPrice(pair, to, from)
+    const rate = Util.getPairInfo(pair, to, from)
 
     expect(rate).toMatchObject({
       exchange,
@@ -44,6 +44,6 @@ describe('adapters', () => {
 
     const { parse } = require(`../${exchange}`)
     const pair = parse(data)
-    expect(() => Util.getLastPrice(pair, to, from)).toThrowError('Pair not exist')
+    expect(() => Util.getPairInfo(pair, to, from)).toThrowError('Pair not exist')
   })
 })

@@ -4,7 +4,7 @@ describe('adapter-binance', () => {
 
   it('can parse price from binance', async () => {
     const exchange = 'binance'
-    const from = 'XMR'
+    const from = 'XRP'
     const to = 'ETH'
 
     const { parse } = require(`../${exchange}`)
@@ -12,7 +12,7 @@ describe('adapter-binance', () => {
     expect(json[`${from}_${to}`]).toMatchObject({
       exchange,
       pair: `${from}_${to}`,
-      last: 0.46301
+      last: 0.0025001
     })
   })
 })

@@ -17,7 +17,7 @@ describe('Model', () => {
 
   it('can get price from binance', async () => {
     const exchange = 'binance'
-    const from = 'XMR'
+    const from = 'XRP'
     const to = 'ETH'
 
     const json = await Model.getPrice(exchange, from, to)

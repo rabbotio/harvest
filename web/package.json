@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "apollo-client-preset": "^1.0.5",
+    "apollo-link-state": "^0.3.0",
     "graphql": "^0.12.3",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
