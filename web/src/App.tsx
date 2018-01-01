@@ -48,6 +48,10 @@ const muiTheme = getMuiTheme({
   }
 })
 
+const onFundChanged = fund => {
+  console.log(fund)
+}
+
 const withService = graphql<Response>(_QUERY)
 export default withService(({ data }) => {
   if (data && data.loading) { return <p>loading...</p> }
@@ -55,7 +59,7 @@ export default withService(({ data }) => {
   // Do something with your data
   return (<MuiThemeProvider muiTheme={muiTheme}>
     <div style={styles.container}>
-      <Fund />
+      <Fund onFundChanged={onFundChanged} />
       <Guide />
       <pre>{JSON.stringify(data)}</pre>
     </div>
