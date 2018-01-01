@@ -110,7 +110,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         <div>|</div>
         <small>{`withdraw fee -${withdrawFees[fromExchange]['eth']} ETH`}</small>
         <div>|</div>
-        <div>{`${fromExchange.toUpperCase()} ${this.currency(withdraw(output, fromExchange, 'eth'))} ${from.toUpperCase()}`}</div>
+        <div>{`${toExchange.toUpperCase()} ${this.currency(withdraw(output, fromExchange, 'eth'))} ${from.toUpperCase()}`}</div>
         <div>|</div>
         <small>{`1 ETH = ${this.currency(this.getPrice('binance', `${to}_eth`).last)} OMG`}</small>
         <div>|</div>
