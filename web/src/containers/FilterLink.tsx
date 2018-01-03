@@ -8,8 +8,13 @@ const VISIBILITY_QUERY = gql`
     visibilityFilter @client
   }
 `
+declare global {
+  interface withActiveStatePropTypes {
+    active: boolean
+  }
+}
 
-const withActiveState = graphql(VISIBILITY_QUERY, {
+const withActiveState = graphql<{}, { filter: any }, withActiveStatePropTypes>(VISIBILITY_QUERY, {
   props: ({ ownProps, data }) => ({
     active: data && ownProps['filter'] === data['visibilityFilter']
   })
@@ -21,7 +26,7 @@ const VISIBILITY_MUTATION = gql`
   }
 `
 
-const setVisibilityFilter = graphql(VISIBILITY_MUTATION, {
+const setVisibilityFilter = graphql<{ s: any }, { filter: any }>(VISIBILITY_MUTATION, {
   props: ({ mutate, ownProps }) => ({
     onClick: () => mutate && mutate({ variables: { filter: ownProps['filter'] } })
   })

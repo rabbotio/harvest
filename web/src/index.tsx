@@ -1,3 +1,4 @@
+/*
 import * as React from 'react'
 import { render } from 'react-dom'
 
@@ -21,8 +22,9 @@ const ApolloApp = (
 )
 
 render(ApolloApp, document.getElementById('root'))
+*/
 
-/*
+
 import * as React from 'react'
 import { render } from 'react-dom'
 import { ApolloClient } from 'apollo-client'
@@ -48,4 +50,3 @@ render(
   </ApolloProvider>,
   document.getElementById('root')
 )
-*/

@@ -1,6 +1,9 @@
 import * as React from 'react'
 
-const Link = ({ active, children, onClick }) => {
+interface LinkPropTypes extends withActiveStatePropTypes, React.HTMLProps<any> {
+
+}
+const Link = ({ active, children, onClick }: LinkPropTypes) => {
   if (active) {
     return <span>{children}</span>
   }
@@ -12,7 +15,9 @@ const Link = ({ active, children, onClick }) => {
         href='#'
         onClick={e => {
           e.preventDefault()
-          onClick()
+          if (onClick) {
+            onClick(e)
+          }
         }}
       >
         {children}
