@@ -3,6 +3,10 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import Util from '../util'
 
+// Material-UI
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+
 const ADD_TODO = gql`
   mutation addTodo($text: String!, $completed: Boolean) {
     addTodo(text: $text, completed: $completed) @client {
@@ -140,13 +144,15 @@ const AddTodo = ({ mutate }) => {
         }}
       >
         <li>
-          BX <input
+          BX <TextField
+            id='fund'
             type='number'
-            defaultValue={DEFAULT_FUND}
             ref={node => {
               input = node
             }}
-          /> THB <button type='submit'>Fund</button>
+            defaultValue={DEFAULT_FUND}
+          />
+          THB < RaisedButton type='submit' label='Go!' primary />
         </li>
       </form>
     </div>

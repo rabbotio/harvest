@@ -24,29 +24,33 @@ const ApolloApp = (
 render(ApolloApp, document.getElementById('root'))
 */
 
-
 import * as React from 'react'
 import { render } from 'react-dom'
 import { ApolloClient } from 'apollo-client'
+import { ApolloLink, HttpLink, InMemoryCache } from 'apollo-client-preset'
 import { withClientState } from 'apollo-link-state'
-import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
 import merge from 'lodash.merge'
 
-import Guide from './components/Guide'
+import App from './App'
 import todos from './resolvers/todos'
 import visibilityFilter from './resolvers/visibilityFilter'
+
+const GRAPHQL_END_POINT = 'http://localhost:4000/graphql'
 
 const cache = new InMemoryCache()
 
 const client = new ApolloClient({
   cache,
-  link: withClientState({ ...merge(todos, visibilityFilter), cache })
+  link: ApolloLink.from([
+    withClientState({ ...merge(todos, visibilityFilter), cache }),
+    new HttpLink({ uri: GRAPHQL_END_POINT }),
+  ]),
 })
 
 render(
   <ApolloProvider client={client}>
-    <Guide />
+    <App />
   </ApolloProvider>,
   document.getElementById('root')
 )

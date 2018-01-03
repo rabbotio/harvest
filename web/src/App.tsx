@@ -1,7 +1,8 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import Guide from './components/Guide';
+import Guide from './components/Guide'
+import Footer from './components/Footer'
 
 // Theme
 import { deepOrange500 } from 'material-ui/styles/colors'
@@ -14,13 +15,6 @@ import 'typeface-roboto'
 // Click handler
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
-
-// Styles
-const styles = {
-  container: {
-    textAlign: 'center'
-  }
-}
 
 const _QUERY = gql`
 {
@@ -47,9 +41,10 @@ const withService = graphql<Response>(_QUERY)
 export default withService(({ data }) => {
   if (data && data.loading) { return <p>loading...</p> }
 
-  // Do somETHing with your data
+  // Do something with your data
   return (<MuiThemeProvider muiTheme={muiTheme}>
-    <div style={styles.container}>
+    <div>
+      <Footer />
       <Guide />
       <pre>{JSON.stringify(data)}</pre>
     </div>
