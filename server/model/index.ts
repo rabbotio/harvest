@@ -1,5 +1,6 @@
 import Adapter from '../adapters'
 class Model {
+  static getExchanges = Adapter.getExchanges
   static getPrice = Adapter.getPrice
   static getPrices = Adapter.getPrices
   static getTradeFee = Adapter.getTradeFee

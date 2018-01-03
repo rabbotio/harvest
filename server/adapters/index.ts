@@ -1,5 +1,20 @@
 import Util from './util'
 class Adapter {
+  static getExchanges() {
+    return {
+      names: [
+        'bx',
+        'binance'
+      ]
+    }
+  }
+
+  static getDepositFees() {
+    return {
+      bx: null,
+      binance: null
+    }
+  }
 
   static getTradeFees() {
     return {

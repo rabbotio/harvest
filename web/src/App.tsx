@@ -18,14 +18,8 @@ injectTapEventPlugin()
 
 const _QUERY = gql`
 {
-  prices {
-    bx {
-      ETH_THB
-      OMG_THB
-    }
-    binance {
-      OMG_ETH
-    }
+  exchanges {
+    names
   }
 }
 `
@@ -39,13 +33,14 @@ const muiTheme = getMuiTheme({
 
 const withService = graphql<Response>(_QUERY)
 export default withService(({ data }) => {
-  if (data && data.loading) { return <p>loading...</p> }
+  if (!data) { return <p>init...</p> }
+  if (data.loading) { return <p>loading...</p> }
 
   // Do something with your data
   return (<MuiThemeProvider muiTheme={muiTheme}>
     <div>
       <Footer />
-      <Guide />
+      <Guide exchanges={data['exchanges']} />
       <pre>{JSON.stringify(data)}</pre>
     </div>
   </MuiThemeProvider>)

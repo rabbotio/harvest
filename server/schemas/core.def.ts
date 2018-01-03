@@ -4,8 +4,9 @@ scalar Date
 type Query {
   price(exchange:String!, from:String!, to:String!): Price,
   prices: Prices,
-  tradeFees: TradeFee,
-  withdrawFees: WithdrawFee,
+  tradeFees: TradeFees,
+  withdrawFees: WithdrawFees,
+  exchanges: Exchanges,
   # routes(from:String!, to:String!, volume:String!): [Route]
 }
 

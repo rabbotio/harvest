@@ -7,6 +7,7 @@ const resolvers = {
     // tradeFee: (root, { exchange }, context) => Model.getTradeFee(exchange),
     tradeFees: (root, { }, context) => Model.getTradeFees(),
     withdrawFees: (root, { }, context) => Model.getWithdrawFees(),
+    exchanges: (root, { }, context) => Model.getExchanges(),
     // routes: (root, { fund, from, fromExchange, toExchange }, context) => Model.getRoute(fund, from, fromExchange, toExchange)
   },
   Mutation: {

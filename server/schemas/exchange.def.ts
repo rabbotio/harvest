@@ -37,13 +37,17 @@ type binanceFees {
   OMG: Float!,
 }
 
-type TradeFee {
+type TradeFees {
   bx: Float,
   binance: Float,
 }
 
-type WithdrawFee {
+type WithdrawFees {
   bx: bxFees,
   binance: binanceFees,
+}
+
+type Exchanges {
+  names: [String]!
 }
 `
