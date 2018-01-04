@@ -40,10 +40,39 @@ const GRAPHQL_END_POINT = 'http://localhost:4000/graphql'
 
 const cache = new InMemoryCache()
 
+const ExchangeStateResolver = {
+  resolvers: {
+    Query: {
+      exchangeState: (_, args, { cache }) => {
+        return {
+          fromExchange: 'bx',
+          toExchange: 'binance'
+        }
+      }
+    },
+    defaults: {
+      exchangeState: {
+        fromExchange: 'bx',
+        toExchange: 'binance'
+      }
+    },
+    Mutation: {
+      exchangeState: (_, args, context) => {
+        context.cache.writeData({
+          data: {
+            exchangeState: args.value
+          }
+        })
+        return null
+      }
+    }
+  }
+}
+
 const client = new ApolloClient({
   cache,
   link: ApolloLink.from([
-    withClientState({ ...merge(todos, visibilityFilter), cache }),
+    withClientState({ ...merge(ExchangeStateResolver, todos, visibilityFilter), cache }),
     new HttpLink({ uri: GRAPHQL_END_POINT }),
   ]),
 })

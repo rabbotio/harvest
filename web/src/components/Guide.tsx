@@ -6,16 +6,16 @@ import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 
 import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
+import { compose, graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 const iconStyles = {
   padding: '8px',
 };
+interface GuidePropTypes extends WithExchangeStatePropTypes, GuideWithGraphQLPropTypes {
 
-const handleChange = (event, index, value) => {
-  console.log(value)
 }
-
-const Guide = ({ exchanges }): any => (
+const Guide = ({ exchanges, handleChange, fromExchange, toExchange }: GuidePropTypes): any => (
   <div>
     <SelectExchange
       label="From"
@@ -31,9 +31,60 @@ const Guide = ({ exchanges }): any => (
     <hr />
     <ClearTodo />
     <ul>
-      <AddTodo />
+      <AddTodo fromExchange={fromExchange} toExchange={toExchange} />
       <VisibleTodoList />
     </ul>
   </div>
 )
-export default Guide
+
+interface WithExchangeStatePropTypes {
+  handleChange?: (event, index, value) => void
+  fromExchange: string
+  toExchange: string
+}
+
+interface GuideWithGraphQLPropTypes {
+  exchanges: string[]
+}
+export default compose<{}, GuideWithGraphQLPropTypes, GuidePropTypes>(
+  graphql(gql`
+    mutation ($value: JSON) {
+      exchangeState(value: $value) @client
+    }
+  `, {
+      props: ({ mutate }) => {
+        return {
+          handleChange: async (event, index, value) => {
+
+            console.log('handleChange:', value)
+            if (mutate) {
+              await mutate({
+                variables: {
+                  value,
+                }
+              })
+            }
+          }
+        }
+      }
+    }),
+  graphql<{ exchangeState: WithExchangeStatePropTypes }, {}>(gql`
+    query {
+      exchangeState @client
+    }
+  `, {
+      props: ({ data }) => {
+
+        if (!data) {
+          return {
+            fromExchange: 'bx',
+            toExchange: 'binance'
+          }
+        }
+
+        return ({
+          ...data.exchangeState
+        })
+      }
+    })
+)(Guide)

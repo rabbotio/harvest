@@ -16,8 +16,8 @@ const ADD_TODO = gql`
 `
 
 // TODO : get from props
-const fromExchange = 'bx'
-const toExchange = 'binance'
+// const fromExchange = 'bx'
+// const toExchange = 'binance'
 
 // TODO : load from graphql
 const tradeFees = {
@@ -122,34 +122,38 @@ const mutateRoute = (mutate, fund, fromExchange, toExchange) => {
   // Summary
   showProfit(mutate, output.result, fund, to)
 }
-
-const AddTodo = ({ mutate }) => {
+interface AddTodoPropTypes extends WithFromToExchangePropTypes {
+}
+const AddTodo = ({ mutate, ownProps }: AddTodoPropTypes) => {
+  const { fromExchange, toExchange } = ownProps
   const DEFAULT_FUND = '10000'
   let input
 
   // TODO : remove this auto trigger
+  /*
   setTimeout(() => {
     mutateRoute(mutate, DEFAULT_FUND, fromExchange, toExchange)
   }, 0)
+  */
 
   return (
     <div>
       <form
         onSubmit={e => {
           e.preventDefault()
-          if (!input.value.trim()) {
+
+          if (isNaN(input.input.valueAsNumber)) {
             return
           }
-          mutateRoute(mutate, input.value, fromExchange, toExchange)
+
+          mutateRoute(mutate, input.input.valueAsNumber, fromExchange, toExchange)
         }}
       >
         <li>
           BX <TextField
             id='fund'
             type='number'
-            ref={node => {
-              input = node
-            }}
+            ref={(node) => input = node}
             defaultValue={DEFAULT_FUND}
           />
           THB < RaisedButton type='submit' label='Go!' primary />
@@ -158,5 +162,21 @@ const AddTodo = ({ mutate }) => {
     </div>
   )
 }
+interface AddTodoWithGraphQLPropTypes {
+  fromExchange: string
+  toExchange: string
+}
 
-export default graphql(ADD_TODO)(AddTodo)
+
+interface WithFromToExchangePropTypes {
+  mutate: any
+  ownProps: AddTodoWithGraphQLPropTypes
+}
+
+
+export default (graphql<{}, AddTodoWithGraphQLPropTypes, AddTodoPropTypes>(ADD_TODO, {
+  props: ({ mutate, ownProps }) => ({
+    mutate,
+    ownProps
+  })
+})(AddTodo))
