@@ -1,12 +1,12 @@
-import Adapter from '../adapters'
+import Cryptox from '@rabbotio/cryptox'
 class Model {
-  static getExchanges = Adapter.getExchanges
-  static getPrice = Adapter.getPrice
-  static getPrices = Adapter.getPrices
-  static getTradeFee = Adapter.getTradeFee
-  static getWithdrawFee = Adapter.getWithdrawFee
-  static getTradeFees = Adapter.getTradeFees
-  static getWithdrawFees = Adapter.getWithdrawFees
+  static getExchanges = Cryptox.getExchanges
+  static getPrice = Cryptox.getPrice
+  static getPrices = Cryptox.getPrices
+  static getTradeFee = Cryptox.getTradeFee
+  static getWithdrawFee = Cryptox.getWithdrawFee
+  static getTradeFees = Cryptox.getTradeFees
+  static getWithdrawFees = Cryptox.getWithdrawFees
 }
 
 export default Model
