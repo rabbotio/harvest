@@ -1,12 +1,15 @@
 import Util from './util'
 
 class bx {
+
+  static exchange = 'bx'
   static API_URL = `https://bx.in.th/api/`
 
   static async getPairs() {
+    const { API_URL, parse } = bx
     const { getJSON } = require('@rabbotio/fetcher')
-    const json = await getJSON(bx.API_URL)
-    return bx.parse(json)
+    const json = await getJSON(API_URL)
+    return parse(json)
   }
 
   static async getPrice(from, to) {
@@ -15,6 +18,7 @@ class bx {
   }
 
   static parse(data): any {
+    const { exchange } = bx
     let result = {}
     const map = new Map(Object.entries(data))
     map.forEach(value => {
@@ -22,7 +26,7 @@ class bx {
       const pair = `${value.secondary_currency}_${value.primary_currency}`
 
       result[pair] = {
-        exchange: 'bx',
+        exchange,
         pair,
         last: value.last_price,
         change: value.change,

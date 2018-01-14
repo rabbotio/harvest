@@ -2,17 +2,20 @@ import Util from './util'
 
 class binance {
 
+  static exchange = 'binance'
   static API_URL = `https://api.binance.com/api/v3/`
 
   static async getPrice(from, to) {
+    const { API_URL, parse } = binance
     const { getJSON } = require('@rabbotio/fetcher')
-    const json = await getJSON(`${binance.API_URL}ticker/price`, { symbol: `${from}${to}` })
-    const pair = binance.parse(json)
+    const json = await getJSON(`${API_URL}ticker/price`, { symbol: `${from}${to}` })
+    const pair = parse(json)
 
     return Util.getPairInfo(pair, from, to)
   }
 
   static parse(data): any {
+    const { exchange } = binance
     const from = data.symbol.substring(0, 3)
     const to = data.symbol.substring(3, 6)
     const last = Number(data.price)
@@ -20,7 +23,7 @@ class binance {
 
     return {
       [pair]: {
-        exchange: 'binance',
+        exchange,
         pair,
         last
       }

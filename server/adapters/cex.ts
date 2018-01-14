@@ -15,13 +15,14 @@ class cex {
   }
 
   static parse(data): any {
+    const { exchange } = cex
     const { lprice, curr1: from, curr2: to } = data
     const last = Number(lprice)
     const pair = `${from}_${to}`
 
     return {
       [pair]: {
-        exchange: cex.exchange,
+        exchange,
         pair,
         last
       }
